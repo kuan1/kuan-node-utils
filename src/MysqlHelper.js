@@ -1,7 +1,7 @@
 const moment = require('moment')
 const knex = require('knex')
 
-// knex 简单封装增删改茶查
+// knex 简单封装增删改查
 class MysqlHelper {
   constructor(config) {
     const { host, port, user, password, database } = config
