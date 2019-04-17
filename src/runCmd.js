@@ -1,0 +1,15 @@
+const spawn = require('child_process').spawn
+
+function runCmd(cmd, args, callback) {
+  return new Promise(resolve => {
+    const child = spawn(cmd, args)
+    let resp = ''
+    child.stdout.on('data', (buffer) => resp += buffer.toString())
+    child.stdout.on('end', () => {
+      resolve(resp)
+      if (callback) callback(resp)
+    })
+  })
+}
+
+module.exports = runCmd
