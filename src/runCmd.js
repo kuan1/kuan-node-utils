@@ -6,7 +6,6 @@ function runCmd(cmd, args, callback) {
     let resp = ''
     child.stdout.on('data', buffer => {
       resp += buffer.toString()
-      console.log(buffer)
     })
     child.stdout.on('end', () => {
       resolve(resp)
