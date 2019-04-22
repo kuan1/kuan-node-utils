@@ -1,18 +1,32 @@
+const ora = require('ora')
+const logger = require('./logger')
 const runCmd = require('./runCmd')
 
 const git = {
   // git clone url --depth 1
-  clone(url, ...args) {
-    console.log('git clone ...')
-    return runCmd('git', ['clone', url, ...args])
+  async clone(url, ...args) {
+    const spinner = ora(`git clone ${url} ${args.join(' ')}...`)
+    spinner.start()
+    const res = await runCmd('git', ['clone', url, ...args])
+    spinner.stop()
+    logger.success('success!')
+    return res
   },
-  pull(...args) {
-    console.log('git pull ...')
-    return runCmd('git', ['pull', ...args])
+  async pull(...args) {
+    const spinner = ora(`git pull ${args.join(' ')}...`)
+    spinner.start()
+    const res = await runCmd('git', ['pull', ...args])
+    spinner.stop()
+    logger.success('success!')
+    return res
   },
-  push(...args) {
-    console.log('git push ...')
-    return runCmd('git', ['push', ...args])
+  async push(...args) {
+    const spinner = ora(`git push ${args}...`)
+    spinner.start()
+    const res = await runCmd('git', ['push', ...args])
+    spinner.stop()
+    logger.success('success!')
+    return res
   }
 }
 
