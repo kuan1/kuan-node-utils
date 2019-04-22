@@ -1,9 +1,10 @@
 const resolve = require('./resolve.js')
-const fileDisplay = require('./fileDisplay')
-const copyDir = require('./copyDir')
+const fileDisplay = require('./fs/fileDisplay')
+const copyDir = require('./fs/copyDir')
 const logger = require('./logger')
 const MysqlHelper = require('./MysqlHelper')
 const runCmd = require('./runCmd')
+const git = require('./git')
 
 module.exports = {
   resolve,
@@ -11,5 +12,6 @@ module.exports = {
   copyDir,
   logger,
   MysqlHelper,
-  runCmd
+  runCmd,
+  git
 }
