@@ -70,20 +70,3 @@ function getMetadata(dir) {
   }
   throw new Error(`${js} is Not Found`)
 }
-
-/**
- * Ask questions, return results.
- *
- * @param {Object} prompts
- * @param {Object} data
- * @param {Function} done
- */
-exports.ask = function ask(prompts, data, done) {
-  async.eachSeries(
-    Object.keys(prompts),
-    (key, next) => {
-      prompt(data, key, prompts[key], next)
-    },
-    done
-  )
-}

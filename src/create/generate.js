@@ -2,7 +2,8 @@ const path = require('path')
 const Metalsmith = require('metalsmith')
 const Handlebars = require('handlebars')
 const render = require('consolidate').handlebars.render
-const { getOptions, ask } = require('./utils')
+const ask = require('./ask')
+const { getOptions } = require('./utils')
 
 /**
  * Generate a template given a `src` and `dest`.
@@ -16,10 +17,7 @@ module.exports = (name, temp) => {
     const inPlace = name === '.'
     const destDirName = inPlace ? process.cwd() : `${process.cwd()}/${name}`
     const opts = getOptions(name, temp)
-    console.log(temp)
-    const metalsmith = Metalsmith(temp)
-
-    console.log(1234)
+    const metalsmith = Metalsmith(`${temp}/template`)
 
     const data = {
       ...metalsmith.metadata(),
@@ -28,9 +26,7 @@ module.exports = (name, temp) => {
       noEscape: true
     }
 
-    console.log(1234, data)
-
-    // metalsmith.use(askQuestions(opts.prompts)).use(renderTemplateFiles(opts))
+    metalsmith.use(askQuestions(opts.prompts)).use(renderTemplateFiles(opts))
 
     metalsmith
       .clean(false)
@@ -47,8 +43,6 @@ module.exports = (name, temp) => {
 function askQuestions(prompts) {
   return (files, metalsmith, done) => {
     ask(prompts, metalsmith.metadata(), done)
-    done()
-    // ask(prompts, metalsmith.metadata(), done)
   }
 }
 

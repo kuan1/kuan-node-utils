@@ -8,8 +8,10 @@ const runCmd = require('./runCmd')
 const git = require('./git')
 const create = require('./create')
 const feedback = require('./feedback')
+const fs = require('./fs')
 
 module.exports = {
+  fs,
   rm,
   resolve,
   fileDisplay,

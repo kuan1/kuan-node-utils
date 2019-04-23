@@ -1,8 +1,8 @@
-const path = require('path')
 const feedback = require('../feedback')
 const download = require('./download')
 const generate = require('./generate')
 const resolve = require('../resolve')
+const { remove } = require('../fs')
 
 /**
  * Generate a template `name` from `remote`
@@ -15,6 +15,10 @@ async function create(remote, name) {
   const url = `https://github.com/${remote}.git`
   const ok = await feedback.confirm(`create boilerplate ${name} from ${url}`)
   if (!ok) return false
+
+  // 删除已有项目
+  const isRemove = await remove(resolve(name))
+  if (!isRemove) return
 
   // 临时下载文件夹
   const temp = resolve('.temp')
