@@ -13,7 +13,6 @@ module.exports = async (prompts, data, done) => {
     const key = keys[i]
     await prompt(data, key, prompts[key])
   }
-  console.log(11, data)
   done()
 }
 

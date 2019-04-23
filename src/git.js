@@ -5,21 +5,21 @@ const runCmd = require('./runCmd')
 
 const git = {
   async clone(url, ...args) {
-    const spinner = ora(chalk.cyan(`git clone ${url} ${args.join(' ')} \n`))
+    const spinner = ora(chalk.cyan(`git clone ${url} ${args.join(' ')} \n `))
     spinner.start()
     const res = await runCmd('git', ['clone', url, ...args])
     spinner.stop()
     return res
   },
   async pull(...args) {
-    const spinner = ora(`git pull ${args.join(' ')}...`)
+    const spinner = ora(`git pull ${args.join(' ')}... \n `)
     spinner.start()
     const res = await runCmd('git', ['pull', ...args])
     spinner.stop()
     return res
   },
   async push(...args) {
-    const spinner = ora(`git push ${args}...`)
+    const spinner = ora(`git push ${args}... \n `)
     spinner.start()
     const res = await runCmd('git', ['push', ...args])
     spinner.stop()
