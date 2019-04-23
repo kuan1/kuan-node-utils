@@ -1,9 +1,9 @@
+const exec = require('child_process').execSync
 const ora = require('ora')
 const chalk = require('chalk')
 const runCmd = require('./runCmd')
 
 const git = {
-  // git clone url --depth 1
   async clone(url, ...args) {
     const spinner = ora(chalk.cyan(`git clone ${url} ${args.join(' ')} \n`))
     spinner.start()
@@ -24,6 +24,18 @@ const git = {
     const res = await runCmd('git', ['push', ...args])
     spinner.stop()
     return res
+  },
+  user() {
+    let name
+    let email
+    try {
+      name = exec('git config --get user.name')
+      email = exec('git config --get user.email')
+    } catch (e) {}
+
+    name = name && JSON.stringify(name.toString().trim()).slice(1, -1)
+    email = email && ' <' + email.toString().trim() + '>'
+    return (name || '') + (email || '')
   }
 }
 

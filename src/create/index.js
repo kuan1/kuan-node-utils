@@ -1,27 +1,5 @@
-const inquirer = require('inquirer')
-const git = require('./git')
-const ora = require('ora')
-const logger = require('./logger')
-const rimraf = require('rimraf').sync
-
-// confirm
-async function confirm(url, project) {
-  const { ok } = await inquirer.prompt([
-    {
-      type: 'confirm',
-      message: `create boilerplate ${project} from ${url}`,
-      name: 'ok'
-    }
-  ])
-  return ok
-}
-
-// git clone
-async function download(url) {
-  const temp = '.temp'
-  rimraf(temp)
-  await git.clone(url, temp, '--depth', 1)
-}
+const { feedback } = require('../index')
+const download = require('./download')
 
 /**
  * Generate a template `project` from `remote`
@@ -30,16 +8,19 @@ async function download(url) {
  * @param {String} project 当前仓库
  */
 async function create(remote, project) {
+  // 确认是否生成项目
   const url = `https://github.com/${remote}.git`
-  const ok = await confirm(url, project)
+  const ok = await feedback.confirm(`create boilerplate ${project} from ${url}`)
   if (!ok) return false
 
-  await download(url, project)
+  // 从github下载项目
+  await download(url)
 }
 
+// To exit with a 'failure' code
 process.on('unhandledRejection', error => {
   console.error(error)
-  process.exit(1) // To exit with a 'failure' code
+  process.exit(1)
 })
 
 module.exports = create
