@@ -1,5 +1,6 @@
+const path = require('path')
 const { green, yellow } = require('chalk')
-const exec = require('child_process').execSync
+const { git } = require('../index')
 
 /**
  *  成功之后打印
@@ -28,7 +29,7 @@ To get started:
 exports.getOptions = (name, dir) => {
   const opts = getMetadata(dir)
   setDefault(opts, 'name', name)
-  const author = getGitUser()
+  const author = git.user()
   if (author) {
     setDefault(opts, 'author', author)
   }
@@ -66,6 +67,8 @@ function getMetadata(dir) {
 
   if (exists(json)) {
     opts = metadata.sync(json)
+  } else {
+    throw new Error('meta.json is Not Found')
   }
 
   return opts

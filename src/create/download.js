@@ -1,5 +1,5 @@
 const rimraf = require('rimraf').sync
-const { git } = require('../index')
+const git = require('../git')
 
 // git clone github repository
 module.exports = async function download(url) {

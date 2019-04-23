@@ -1,6 +1,10 @@
 const inquirer = require('inquirer')
 
-async function confirm(message = 'are you confirm ?') {
+/**
+ * 确认
+ * @return {Promise}
+ */
+exports.confirm = async (message = 'are you confirm ?') => {
   const { ok } = await inquirer.prompt([
     {
       type: 'confirm',
@@ -11,6 +15,18 @@ async function confirm(message = 'are you confirm ?') {
   return ok
 }
 
-module.exports = {
-  confirm
+/**
+ * 选择
+ * @return {Promise}
+ */
+exports.select = async (
+  name = '选择',
+  choices = ['选项1', '选项2', '选项3']
+) => {
+  const res = await inquirer.prompt({
+    name,
+    type: 'list',
+    choices
+  })
+  return res
 }

@@ -5,10 +5,10 @@ const { create } = require('../src')
 
 program
   .version(require('../package').version, '-v, --version')
-  .command('create <remote> <project>')
+  .command('create <remote> <name>')
   .description('generate a project from a remote template (legacy API)')
-  .action((remote, project) => {
-    create(remote, project)
+  .action((remote, name) => {
+    create(remote, name.replace(/[\/:]/g, '-'))
   })
 
 program.parse(process.argv)

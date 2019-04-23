@@ -1,4 +1,6 @@
-const { execSync } = require('child_process')
+const utils = require('../src')
 
-const res = execSync('ls')
-console.log(res.toString())
+;(async () => {
+  const data = await utils.feedback.select()
+  console.log(11, data)
+})()
