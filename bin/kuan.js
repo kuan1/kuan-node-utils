@@ -9,7 +9,6 @@ program
   .description('generate a project from a remote template (legacy API)')
   .action((remote, project) => {
     create(remote, project)
-    console.log(remote, project)
   })
 
 program.parse(process.argv)

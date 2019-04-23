@@ -1,3 +1,4 @@
+const rm = require('rimraf')
 const resolve = require('./resolve.js')
 const fileDisplay = require('./fs/fileDisplay')
 const copyDir = require('./fs/copyDir')
@@ -8,6 +9,7 @@ const git = require('./git')
 const create = require('./create')
 
 module.exports = {
+  rm,
   resolve,
   fileDisplay,
   copyDir,

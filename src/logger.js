@@ -3,7 +3,8 @@ const readline = require('readline')
 
 const chalkTag = msg => chalk.bgBlackBright.white.dim(` ${msg} `)
 
-const log = (msg, tag) => console.log(tag ? `${chalkTag(tag)} ${msg}` : msg)
+const log = (msg, tag) =>
+  console.log(tag ? `${chalkTag(tag)} ${msg}` : `${msg}`)
 
 exports.log = log
 
@@ -11,7 +12,9 @@ exports.warn = (msg, tag) => log(chalk.yellow(msg), tag)
 
 exports.error = (msg, tag) => log(chalk.red(msg), tag)
 
-exports.success = (msg, tag) => log(chalk.cyan(msg), tag)
+exports.info = (msg, tag) => log(chalk.cyan(msg), tag)
+
+exports.success = (msg, tag) => log(chalk.green(msg), tag)
 
 exports.clearConsole = title => {
   if (process.stdout.isTTY) {
