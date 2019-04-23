@@ -1,6 +1,7 @@
 const path = require('path')
+const fs = require('fs')
 const { green, yellow } = require('chalk')
-const { git } = require('../index')
+const git = require('../git')
 
 /**
  *  成功之后打印
@@ -62,13 +63,13 @@ function setDefault(opts, key, val) {
  * @return {Object}
  */
 function getMetadata(dir) {
-  const json = path.join(dir, 'meta.json')
+  const js = path.join(dir, 'meta.js')
   let opts = {}
 
-  if (exists(json)) {
-    opts = metadata.sync(json)
+  if (fs.existsSync(js)) {
+    opts = require(js)
   } else {
-    throw new Error('meta.json is Not Found')
+    throw new Error(`${js} is Not Found`)
   }
 
   return opts

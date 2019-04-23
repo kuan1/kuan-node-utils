@@ -7,7 +7,7 @@ const { getOptions } = require('./utils')
  * @param {String} src
  */
 
-module.exports = (name, src) => {
-  const opts = getOptions(name, src)
+module.exports = (name, temp) => {
+  const opts = getOptions(name, temp)
   console.log(opts)
 }

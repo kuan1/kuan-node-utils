@@ -1,9 +1,8 @@
 const path = require('path')
-const fs = require('fs')
-const rimraf = require('rimraf').sync
 const feedback = require('../feedback')
 const download = require('./download')
 const generate = require('./generate')
+const resolve = require('../resolve')
 
 /**
  * Generate a template `name` from `remote`
@@ -18,17 +17,9 @@ async function create(remote, name) {
   if (!ok) return false
 
   // 临时下载文件夹
-  const temp = path.resolve(__dirname, '.temp')
+  const temp = resolve('.temp')
 
-  if (fs.existsSync(temp)) {
-    const ok = await feedback.confirm('.temp exists! should remove ?')
-    if (ok) {
-      rimraf(temp)
-      await download(url)
-    }
-  } else {
-    await download(url)
-  }
+  await download(url, temp)
 
   // 生成项目
   await generate(name, temp)

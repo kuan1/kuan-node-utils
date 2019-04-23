@@ -7,7 +7,7 @@
     "kuan": "bin/kuan.js"
   },
   "scripts": {
-    "c": "kuan create kuan1/temp create-temp",
+    "c": "kuan create kuan1/temp my-project",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
