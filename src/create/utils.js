@@ -64,13 +64,26 @@ function setDefault(opts, key, val) {
  */
 function getMetadata(dir) {
   const js = path.join(dir, 'meta.js')
-  let opts = {}
 
   if (fs.existsSync(js)) {
-    opts = require(js)
-  } else {
-    throw new Error(`${js} is Not Found`)
+    return require(js)
   }
+  throw new Error(`${js} is Not Found`)
+}
 
-  return opts
+/**
+ * Ask questions, return results.
+ *
+ * @param {Object} prompts
+ * @param {Object} data
+ * @param {Function} done
+ */
+exports.ask = function ask(prompts, data, done) {
+  async.eachSeries(
+    Object.keys(prompts),
+    (key, next) => {
+      prompt(data, key, prompts[key], next)
+    },
+    done
+  )
 }
