@@ -18,3 +18,5 @@ yarn-error.log*
 *.sw*
 
 test/mysql.js
+
+package-lock.json

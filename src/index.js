@@ -5,6 +5,7 @@ const logger = require('./logger')
 const MysqlHelper = require('./MysqlHelper')
 const runCmd = require('./runCmd')
 const git = require('./git')
+const create = require('./create')
 
 module.exports = {
   resolve,
@@ -13,5 +14,6 @@ module.exports = {
   logger,
   MysqlHelper,
   runCmd,
-  git
+  git,
+  create
 }
