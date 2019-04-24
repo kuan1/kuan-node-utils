@@ -1,9 +1,11 @@
+const fs = require('fs')
 const execFileSync = require('child_process').execFileSync
 const rimraf = require('rimraf').sync
 const ora = require('ora')
 const git = require('../git')
 const resolve = require('../resolve')
 const feedback = require('../feedback')
+const logger = require('../logger')
 
 /**
  * 根据用户输入重写options
@@ -18,6 +20,10 @@ async function getOptions(options = {}, callback) {
     shell = `${__dirname}/deploy.sh`
   } = options
   options.dist = await feedback.input('文件打包路径', dist)
+  if (!fs.existsSync(resolve(options.dist))) {
+    logger.error(`文件打包 ${options.dist} 不存在`)
+    process.exit(1)
+  }
   rimraf(resolve(options.dist, '.git')) // 删除.git文件
   options.repository = await feedback.input('远程仓库地址', repository)
   options.branch = await feedback.input('推送分支', branch)
