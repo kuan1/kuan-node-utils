@@ -36,6 +36,20 @@ const git = {
     name = name && JSON.stringify(name.toString().trim()).slice(1, -1)
     email = email && ' <' + email.toString().trim() + '>'
     return (name || '') + (email || '')
+  },
+  repository() {
+    let res
+    let repository
+    try {
+      res = exec('git remote -v').toString()
+    } catch (e) {}
+    if (res) {
+      repository = res
+        .split('\n')[1]
+        .replace('origin\t', '')
+        .replace(' (push)', '')
+    }
+    return repository
   }
 }
 

@@ -1,5 +1,13 @@
 # kuan-node-utils
+
 kuan-node-utils
 
-- knex 封装 MysqlHelper
-- 其他
+- fs: 增强 fs
+- resolve: 拼接路径 process.pwd()
+- logger: console width chalk
+- MysqlHelper: knex 封装 MysqlHelper
+- runCmd: 运行命令
+- git: git 基础操作
+- feedback: inquirer
+- create: 学习 vue cli init
+- deploy: 自动部署
