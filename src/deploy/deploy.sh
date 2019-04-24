@@ -8,22 +8,26 @@ repository=$2
 branch=$3
 num=3
 
+echo "【exec】$dist is pushing $repository $branch"
+
 if [ $# -ne $num ];then
   echo "【exec error】参数长度: $num, 当前长度: $#"
   exit
 fi
 
-echo "【exec】$dist is pushing $repository $branch..."
-
 # navigate into the build output directory
 cd $dist
 
-# git init
-# git add -A
-# git commit -m 'deploy'
+gitDir=".git"
+if [ ! -d gitDir ];then
+  git init
+fi
 
-# git push -f $repository $branch
+git add .
+git commit -am 'deploy'
 
-echo "success!"
+git push -f $repository master:$branch
+
+echo "success push $repository $branch !"
 
 cd -
