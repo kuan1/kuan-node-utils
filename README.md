@@ -9,5 +9,4 @@ kuan-node-utils
 - runCmd: 运行命令
 - git: git 基础操作
 - feedback: inquirer
-- create: 学习 vue cli init
 - deploy: 自动部署
