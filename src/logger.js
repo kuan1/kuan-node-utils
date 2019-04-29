@@ -1,5 +1,6 @@
 const chalk = require('chalk')
 const readline = require('readline')
+const ip = require('ip')
 
 const chalkTag = msg => chalk.bgBlackBright.white.dim(` ${msg} `)
 
@@ -15,6 +16,20 @@ exports.error = (msg, tag) => log(chalk.red(msg), tag)
 exports.info = (msg, tag) => log(chalk.cyan(msg), tag)
 
 exports.success = (msg, tag) => log(chalk.green(msg), tag)
+
+exports.run = port => {
+  const local = `http://${ip.address()}:${port}`
+  const network = `http://localhost:${port}`
+  console.log(
+    [
+      '',
+      `app is running:`,
+      `- Local:   ${chalk.cyan(local)}`,
+      `- Network: ${chalk.cyan(network)}`,
+      ''
+    ].join('\n')
+  )
+}
 
 exports.clearConsole = title => {
   if (process.stdout.isTTY) {
