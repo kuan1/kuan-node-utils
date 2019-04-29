@@ -16,7 +16,7 @@ async function getOptions(options = {}, callback) {
   const {
     dist = 'dist',
     repository = git.repository(),
-    branch = 'dist',
+    branch = 'gh-pages',
     shell = `${__dirname}/deploy.sh`
   } = options
   options.dist = await feedback.input('文件打包路径', dist)
@@ -48,7 +48,7 @@ function getShellPath(shellPath) {
  * @returns
  */
 function deploy(config = {}) {
-  return new Promise((resolve, reject) => {
+  return new Promise(resolve => {
     getOptions(config, options => {
       const { dist, repository, branch, shell } = options
       const spinner = ora('starting auto deploy')
