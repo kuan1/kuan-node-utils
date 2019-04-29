@@ -567,6 +567,11 @@ interpret@^1.2.0:
   resolved "https://registry.npmjs.org/interpret/-/interpret-1.2.0.tgz#d5061a6224be58e8083985f5014d844359576296"
   integrity sha512-mT34yGKMNceBQUoVn7iCDKDntA7SC6gycMAWzGx1z/CMCTV7b2AAtXlo3nRyHZ1FelRkQbQjprHSYGwzLtkVbw==
 
+ip@^1.1.5:
+  version "1.1.5"
+  resolved "https://registry.npmjs.org/ip/-/ip-1.1.5.tgz#bdded70114290828c0a039e72ef25f5aaec4354a"
+  integrity sha1-vd7XARQpCCjAoDnnLvJfWq7ENUo=
+
 is-absolute@^1.0.0:
   version "1.0.0"
   resolved "https://registry.npmjs.org/is-absolute/-/is-absolute-1.0.0.tgz#395e1ae84b11f26ad1795e73c17378e48a301576"
