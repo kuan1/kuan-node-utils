@@ -1,6 +1,6 @@
 {
   "name": "kuan-node-utils",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "kuan-node-utils",
   "main": "src/index.js",
   "scripts": {
