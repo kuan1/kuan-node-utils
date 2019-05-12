@@ -49,7 +49,7 @@ class MysqlHelper {
     const [data, total] = await Promise.all([getData, getTotal])
 
     return {
-      data: this.formatData(data),
+      list: this.formatData(data),
       total: total.length ? total[0].total : 0
     }
   }
