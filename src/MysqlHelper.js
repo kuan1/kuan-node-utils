@@ -96,6 +96,20 @@ class MysqlHelper {
     return res
   }
 
+  /**
+  * 更新数据
+  * @param ctx
+  * @param dbName
+  * @returns {Promise<null Number>}
+  */
+  async remove(dbName, id, key = 'id') {
+    if (!id) throw new Error('id not found')
+    const res = await this.mysql(dbName).where({
+      [key]: id
+    }).del()
+    return res
+  }
+
   // 关闭连接
   destroy() {
     this.mysql.destroy()
