@@ -12,8 +12,10 @@ class MysqlHelper {
         port,
         user,
         password,
-        database,
-      }
+        database
+      },
+      pool: { min: 0, max: 5 },
+      acquireConnectionTimeout: 4500
     })
   }
   // 测试化创建时间、更新时间
@@ -45,7 +47,9 @@ class MysqlHelper {
       .offset((page - 1) * size)
       .where(condition)
       .orderBy('create_time', 'desc')
-    const getTotal = this.mysql(dbName).where(condition).count('id as total')
+    const getTotal = this.mysql(dbName)
+      .where(condition)
+      .count('id as total')
     const [data, total] = await Promise.all([getData, getTotal])
 
     return {
@@ -62,7 +66,9 @@ class MysqlHelper {
    */
   async detail(dbName, id) {
     if (!id) throw new Error('id is NotFound')
-    const data = await this.mysql(dbName).select().where('id', id)
+    const data = await this.mysql(dbName)
+      .select()
+      .where('id', id)
     return data.length > 0 ? data[0] : {}
   }
 
@@ -80,19 +86,21 @@ class MysqlHelper {
   }
 
   /**
- * 更新数据
- * @param ctx
- * @param dbName
- * @param body (插入内容，或者使用发送的body)
- * @param key (查询条件)
- * @returns {Promise<null Number>}
- */
+   * 更新数据
+   * @param ctx
+   * @param dbName
+   * @param body (插入内容，或者使用发送的body)
+   * @param key (查询条件)
+   * @returns {Promise<null Number>}
+   */
   async update(dbName, data, key = 'id') {
     const id = data[key]
     delete data.id
-    const res = await this.mysql(dbName).update(data).where({
-      [key]: id
-    })
+    const res = await this.mysql(dbName)
+      .update(data)
+      .where({
+        [key]: id
+      })
     return res
   }
 
