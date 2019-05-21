@@ -53,7 +53,7 @@ class MysqlHelper {
     const [data, total] = await Promise.all([getData, getTotal])
 
     return {
-      data: this.formatData(data),
+      list: this.formatData(data),
       total: total.length ? total[0].total : 0
     }
   }
@@ -101,6 +101,20 @@ class MysqlHelper {
       .where({
         [key]: id
       })
+    return res
+  }
+
+  /**
+  * 更新数据
+  * @param ctx
+  * @param dbName
+  * @returns {Promise<null Number>}
+  */
+  async remove(dbName, id, key = 'id') {
+    if (!id) throw new Error('id not found')
+    const res = await this.mysql(dbName).where({
+      [key]: id
+    }).del()
     return res
   }
 
