@@ -4,6 +4,7 @@ const logger = require('./logger')
 function runCmd(cmd, args, options = {}) {
   const finalOptions = {
     cwd: process.cwd(),
+    env: process.env,
     ...options
   }
   return new Promise((resolve, reject) => {
@@ -13,6 +14,8 @@ function runCmd(cmd, args, options = {}) {
       resp += buffer.toString()
     })
     child.stdout.pipe(process.stdout)
+    child.stderr.pipe(process.stdout)
+
     child.on('close', status => {
       if (status == 0) {
         logger.success('exec success!')
