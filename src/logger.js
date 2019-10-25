@@ -4,8 +4,9 @@ const ip = require('ip')
 
 const chalkTag = msg => chalk.bgBlackBright.white.dim(` ${msg} `)
 
-const log = (msg, tag) =>
+const log = (msg, tag) => {
   console.log(tag ? `${chalkTag(tag)} ${msg}` : `${msg}`)
+}
 
 exports.log = log
 
@@ -18,8 +19,8 @@ exports.info = (msg, tag) => log(chalk.cyan(msg), tag)
 exports.success = (msg, tag) => log(chalk.green(msg), tag)
 
 exports.run = port => {
-  const local = `http://${ip.address()}:${port}`
-  const network = `http://localhost:${port}`
+  const local = `http://localhost:${port}`
+  const network = `http://${ip.address()}:${port}`
   console.log(
     [
       '',
@@ -31,7 +32,7 @@ exports.run = port => {
   )
 }
 
-exports.clearConsole = title => {
+exports.clear = title => {
   if (process.stdout.isTTY) {
     const blank = '\n'.repeat(process.stdout.rows)
     console.log(blank)
