@@ -7,7 +7,7 @@
     "vue"
   ],
   "scripts": {
-    "dev": "node __test__",
+    "dev": "node __test__/mysql",
     "version": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0 --commit-path '.'"
   },
   "author": "luzhongkuan <luzhongk@126.com>",

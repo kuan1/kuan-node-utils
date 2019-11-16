@@ -18,3 +18,5 @@ yarn-error.log*
 *.sw*
 
 node-mysql/__test__
+mysql
+yarn.lock
