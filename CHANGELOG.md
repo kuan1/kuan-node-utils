@@ -1,4 +1,8 @@
-# [0.0.0](https://github.com/kuan1/kuan-node-utils/compare/v1.0.0...v0.0.0) (2019-11-16)
+# [0.0.0](https://github.com/kuan1/kuan-node-utils/compare/v1.1.0...v0.0.0) (2019-11-16)
+
+
+
+# [1.1.0](https://github.com/kuan1/kuan-node-utils/compare/v1.0.0...v1.1.0) (2019-11-16)
 
 
 ### Features
