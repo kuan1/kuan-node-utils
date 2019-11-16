@@ -1,13 +1,14 @@
 const fs = require('fs')
 const path = require('path')
 const chalk = require('chalk')
+const { version } = requrie('../lerna.json')
 
 const { input } = require('./utils/feedback')
 
 function getJson(name = '插件名字', description = '插件描述') {
   return {
     name: `@luzhongk/${name}`,
-    version: '0.0.4',
+    version,
     description,
     keywords: ["node"],
     scripts: {

@@ -1,0 +1,34 @@
+{
+  "name": "@luzhongk/node-feedback",
+  "version": "1.1.0",
+  "description": "node feedback",
+  "keywords": [
+    "node"
+  ],
+  "scripts": {
+    "dev": "node __tests__",
+    "version": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0 --commit-path '.'"
+  },
+  "author": "luzhongkuan <luzhongk@126.com>",
+  "homepage": "https://github.com/kuan1/kuan-node-utils/tree/master/packages/node-feedback",
+  "license": "ISC",
+  "main": "lib/node-feedback.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "files": [
+    "lib"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kuan1/kuan-node-utils.git"
+  },
+  "bugs": {
+    "url": "https://github.com/kuan1/kuan-node-utils/issues"
+  },
+  "dependencies": {},
+  "devDependencies": {}
+}
