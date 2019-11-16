@@ -9,9 +9,9 @@ function getJson(name = '插件名字', description = '插件描述') {
     name: `@luzhongk/${name}`,
     version: '0.0.4',
     description,
-    keywords: ['axios', 'vue'],
+    keywords: ["node"],
     scripts: {
-      dev: `node __test__`,
+      dev: `node __tests__`,
       version:
         "conventional-changelog -p angular -i CHANGELOG.md -s -r 0 --commit-path '.'"
     },
