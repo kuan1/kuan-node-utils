@@ -1,0 +1,37 @@
+{
+  "name": "@luzhongk/node-mysql",
+  "version": "0.0.4",
+  "description": "knex简单包装",
+  "keywords": [
+    "axios",
+    "vue"
+  ],
+  "scripts": {
+    "dev": "node __test__",
+    "version": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0 --commit-path '.'"
+  },
+  "author": "luzhongkuan <luzhongk@126.com>",
+  "homepage": "https://github.com/kuan1/kuan-node-utils/tree/master/packages/node-mysql",
+  "license": "ISC",
+  "main": "lib/node-mysql.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "files": [
+    "lib"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kuan1/kuan-node-utils.git"
+  },
+  "bugs": {
+    "url": "https://github.com/kuan1/kuan-node-utils/issues"
+  },
+  "dependencies": {
+    "knex": "^0.20.2",
+    "moment": "^2.24.0"
+  }
+}

@@ -1,38 +1,25 @@
 {
   "name": "kuan-node-utils",
-  "version": "1.0.5",
-  "description": "kuan-node-utils",
-  "main": "src/index.js",
+  "version": "0.0.0",
+  "private": true,
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev:mysql": "lerna run dev --scope @luzhongk/node-mysql",
+    "bootstrap": "lerna bootstrap",
+    "json": "node ./scripts/createJSON.js",
+    "version": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0 && git add CHANGELOG.md"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/kuan1/kuan-node-utils.git"
+  "gitHooks": {
+    "commit-msg": "node scripts/verifyCommitMsg.js"
   },
-  "files": [
-    "src",
-    "bin"
-  ],
   "keywords": [
-    "kuan-node-utils"
+    "luzhongk"
   ],
   "author": "luzhongk@126.com",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/kuan1/kuan-node-utils/issues"
-  },
-  "homepage": "https://github.com/kuan1/kuan-node-utils#readme",
-  "dependencies": {
-    "chalk": "^2.4.2",
-    "inquirer": "^6.3.1",
-    "ip": "^1.1.5",
-    "knex": "^0.16.5",
-    "moment": "^2.24.0",
-    "mysql": "^2.16.0",
-    "ora": "^3.4.0",
-    "readline": "^1.3.0",
-    "rimraf": "^2.6.3"
-  },
-  "devDependencies": {}
+  "dependencies": {},
+  "devDependencies": {
+    "chalk": "^3.0.0",
+    "inquirer": "^7.0.0",
+    "yorkie": "^2.0.0"
+  }
 }

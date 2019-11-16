@@ -1,6 +1,6 @@
 .DS_Store
 node_modules
-/dist
+dist
 # local env files
 .env.local
 .env.*.local
@@ -17,4 +17,8 @@ yarn-error.log*
 *.sln
 *.sw*
 
-node-mysql/__test__
+test/mysql.js
+
+package-lock.json
+
+.temp
