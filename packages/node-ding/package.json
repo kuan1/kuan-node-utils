@@ -1,18 +1,19 @@
 {
-  "name": "@luzhongk/node-feedback",
+  "name": "@luzhongk/node-ding",
   "version": "1.1.0",
-  "description": "node feedback",
+  "description": "nodeJS发送钉钉消息",
   "keywords": [
-    "node"
+    "node",
+    "钉钉"
   ],
   "scripts": {
     "dev": "node __tests__",
     "version": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0 --commit-path '.'"
   },
   "author": "luzhongkuan <luzhongk@126.com>",
-  "homepage": "https://github.com/kuan1/kuan-node-utils/tree/master/packages/node-feedback",
+  "homepage": "https://github.com/kuan1/kuan-node-utils/tree/master/packages/node-ding",
   "license": "ISC",
-  "main": "lib/node-feedback.js",
+  "main": "lib/node-ding.js",
   "directories": {
     "lib": "lib"
   },
@@ -30,6 +31,10 @@
     "url": "https://github.com/kuan1/kuan-node-utils/issues"
   },
   "dependencies": {
-    "inquirer": "^7.0.0"
+    "axios": "^0.19.0",
+    "crypto": "^1.0.1"
+  },
+  "devDependencies": {
+    "@luzhongk/node-feedback": "^1.1.0"
   }
 }

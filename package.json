@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "dev:mysql": "lerna run dev --scope @luzhongk/node-mysql",
+    "dev:ding": "lerna run dev --scope @luzhongk/node-ding",
     "bootstrap": "lerna bootstrap",
     "json": "node ./scripts/createJSON.js",
     "version": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0 && git add CHANGELOG.md"
