@@ -48,14 +48,14 @@ module.exports = class Ding {
   }
 
   // 发送卡片类型
-  sendCard(title, text, url) {
+  sendCard(title, text, url, singleTitle = "") {
     const data = {
       actionCard: {
         title,
         text,
         hideAvatar: "0",
         btnOrientation: "0",
-        singleTitle: "详情",
+        singleTitle,
         singleURL: url
       },
       msgtype: "actionCard"

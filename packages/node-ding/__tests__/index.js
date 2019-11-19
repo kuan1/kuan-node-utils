@@ -16,7 +16,8 @@ async function sendCard(ding) {
   const res = await ding.sendCard(
     "这是标题",
     `![这给一个图片](http://pic.kuan1.top/a56410b522f383cc53da5783305faa6b.png)`,
-    "https://www.luzhongkuan.cn"
+    "https://www.luzhongkuan.cn",
+    "这个是底部"
   );
   console.log("发送卡片成功", res);
 }
