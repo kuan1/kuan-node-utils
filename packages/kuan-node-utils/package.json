@@ -1,0 +1,33 @@
+{
+  "name": "kuan-node-utils",
+  "version": "1.1.1",
+  "description": "node工具类",
+  "keywords": [
+    "node"
+  ],
+  "scripts": {
+    "dev": "node __tests__",
+    "version": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0 --commit-path '.'"
+  },
+  "author": "luzhongkuan <luzhongk@126.com>",
+  "homepage": "https://github.com/kuan1/kuan-node-utils/tree/master/packages/kuan-node-utils",
+  "license": "ISC",
+  "main": "index.js",
+  "files": [],
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kuan1/kuan-node-utils.git"
+  },
+  "bugs": {
+    "url": "https://github.com/kuan1/kuan-node-utils/issues"
+  },
+  "dependencies": {
+    "@luzhongk/node-ding": "^1.1.1",
+    "@luzhongk/node-feedback": "^1.1.1",
+    "@luzhongk/node-logger": "^1.1.1",
+    "@luzhongk/node-mysql": "^1.1.1"
+  }
+}
