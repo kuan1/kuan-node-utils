@@ -1,6 +1,6 @@
 {
   "name": "kuan-node-utils",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "node工具类",
   "keywords": [
     "node"
@@ -25,9 +25,9 @@
     "url": "https://github.com/kuan1/kuan-node-utils/issues"
   },
   "dependencies": {
-    "@luzhongk/node-ding": "^1.1.1",
-    "@luzhongk/node-feedback": "^1.1.1",
-    "@luzhongk/node-logger": "^1.1.1",
-    "@luzhongk/node-mysql": "^1.1.1"
+    "@luzhongk/node-ding": "^1.1.2",
+    "@luzhongk/node-feedback": "^1.1.2",
+    "@luzhongk/node-logger": "^1.1.2",
+    "@luzhongk/node-mysql": "^1.1.2"
   }
 }
