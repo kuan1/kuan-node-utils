@@ -3,7 +3,7 @@
 ## Usage
 
 ```js
-const download = require('@luzhongk/node-download')
+const download = require('@luzhongk/node-get')
 
 /**
  * @description: 文件下载
