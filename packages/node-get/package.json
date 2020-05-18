@@ -1,5 +1,5 @@
 {
-  "name": "@luzhongk/node-download",
+  "name": "@luzhongk/node-get",
   "version": "1.1.2",
   "description": "批量下载文件",
   "keywords": [
@@ -11,9 +11,9 @@
     "version": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0 --commit-path '.'"
   },
   "author": "luzhongkuan <luzhongk@126.com>",
-  "homepage": "https://github.com/kuan1/kuan-node-utils/tree/master/packages/node-download",
+  "homepage": "https://github.com/kuan1/kuan-node-utils/tree/master/packages/node-get",
   "license": "ISC",
-  "main": "lib/node-download.js",
+  "main": "lib/index.js",
   "directories": {
     "lib": "lib"
   },
