@@ -78,7 +78,7 @@ class Concurrent {
  * 并发任务
  * @param {Object} options 配发任务配置
  * @param {Object} ctrl 是否返回Promise
- * @returns {Promise | Concurrent}
+ * @returns {Promise}
  */
 module.exports = (options = {}, ctrl = {}) => {
   return new Promise((resolve, reject) => {
