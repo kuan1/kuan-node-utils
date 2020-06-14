@@ -1,15 +1,23 @@
 const download = require('../lib')
 
-/**
- * @description: 文件下载
- * @param {src} String 网络地址
- * @param {dir} String 下载文件夹
- * @param {dest} String 保存文件名字
- * @return: Promise
- */
-const images = [
+const data = [
   {
     src: 'https://img1.halobear.com/pano/f79085cd610fc4ee1d8c8eee13d73b3b.zip',
+    // dir: '',
+    // dest: '',
+  },
+  {
+    src: 'http://pic.kuan1.top/f7587935f6263980fc6f1fab221bd6ba.jpeg',
+    // dir: '',
+    // dest: '',
+  },
+  {
+    src: 'http://pic.kuan1.top/e341eb0380876c42d1ef6f65e291e353.png11',
+    // dir: '',
+    // dest: '',
+  },
+  {
+    src: 'http://pic.kuan1.top/77c1ba89bb567eb94160c14a6a82320b.png',
     // dir: '',
     // dest: '',
   },
@@ -19,13 +27,12 @@ start()
 
 async function start() {
   await download({
-    images,
-    // dir: 'images', // 保存文件夹
-    // concurrentNum: 5, // 并发数量
-    // 错误
-    onError(e) {
-      console.log(e.message)
+    data,
+    errorLimit: 1,
+    onprogress(e, total) {
+      console.log('剩余任务数量', total)
+      e && console.log(e)
     },
   })
-  console.log('文件下载成功')
+  console.log('任务下载成功')
 }

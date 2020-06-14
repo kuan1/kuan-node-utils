@@ -5,6 +5,7 @@ const Axios = require('axios')
 
 const axios = Axios.create()
 axios.defaults.timeout = 30000
+const defaultDir = path.resolve(process.cwd(), '.download') // 下载文件夹
 
 function writeFile(response, dest) {
   return new Promise((resolve, reject) => {
@@ -15,15 +16,16 @@ function writeFile(response, dest) {
   })
 }
 
-module.exports = async (src, dir, destImage) => {
-  let dest = destImage || path.resolve(dir, path.basename(src).split('?')[0])
-  if (!dest.includes('.')) {
-    dest = `${dest}.jpg`
-  }
-
+/**
+ * @param {string} src 文件下载地址
+ * @param {string} dir 文件下载目录
+ * @param {string} dest 文件完整地址（如果没有截取下载地址目录）
+ */
+module.exports = async ({ src = '', dir = defaultDir, dest: destImage }) => {
+  const dest = destImage || path.resolve(dir, path.basename(src).split('?')[0])
   const exists = await fs.pathExists(dest)
   if (exists) {
-    return console.log(chalk.green(`下载成功: ${src}`))
+    return console.log(chalk.cyan(`缓存跳过: ${src}`))
   }
   try {
     const response = await axios({
@@ -33,9 +35,9 @@ module.exports = async (src, dir, destImage) => {
     await fs.ensureDir(path.dirname(dest))
     await writeFile(response, dest)
     console.log(chalk.green(`下载成功: ${src}`))
-    return [null, src]
+    return src
   } catch (e) {
     console.log(chalk.red(`下载错误: ${src}`), chalk.red(e.message))
-    return [e, src]
+    return Promise.reject(e)
   }
 }
