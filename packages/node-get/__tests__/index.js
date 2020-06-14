@@ -23,16 +23,25 @@ const data = [
   },
 ]
 
+const ctrl = {}
 start()
 
 async function start() {
-  await download({
-    data,
-    errorLimit: 1,
-    onprogress(e, total) {
-      console.log('剩余任务数量', total)
-      e && console.log(e)
-    },
-  })
-  console.log('任务下载成功')
+  try {
+    await download(
+      {
+        data,
+        errorLimit: 1,
+        onprogress(e, total) {
+          console.log('剩余任务数量', total)
+          e && console.log(e)
+          ctrl.cancel()
+        },
+      },
+      ctrl
+    )
+    console.log('任务下载成功')
+  } catch (e) {
+    console.log(11, e)
+  }
 }

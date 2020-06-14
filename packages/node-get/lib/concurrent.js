@@ -27,6 +27,17 @@ class Concurrent {
     }
   }
 
+  // 取消并发
+  cancel() {
+    // 任务已经失败或者取消直接返回
+    if (this.errors.length >= this.errorLimit) return
+    // 取消任务后，清空队列
+    this.errorLimit = 0
+    this.data = []
+    this.errors.push(new Error('cancel'))
+    this.onerror(this.errors)
+  }
+
   async startItem() {
     const item = this.data.shift()
     if (!item) {
@@ -63,8 +74,23 @@ class Concurrent {
   }
 }
 
-module.exports = (options = {}) => {
+/**
+ * 并发任务
+ * @param {Object} options 配发任务配置
+ * @param {Object} ctrl 是否返回Promise
+ * @returns {Promise | Concurrent}
+ */
+module.exports = (options = {}, ctrl = {}) => {
   return new Promise((resolve, reject) => {
-    new Concurrent(options, resolve, reject)
+    const onsuccess = (e) => {
+      ctrl.cancel = noop
+      resolve(e)
+    }
+    const onerror = (e) => {
+      ctrl.cancel = noop
+      reject(e)
+    }
+    const con = new Concurrent(options, onsuccess, onerror)
+    ctrl.cancel = con.cancel.call(con)
   })
 }
