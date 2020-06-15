@@ -45,10 +45,10 @@ class Concurrent {
     }
     try {
       await this.fn(item)
-      this.onprogress(null, this.total - 1)
+      this.handleProgress(null, this.total - 1)
     } catch (e) {
       this.validateError(e)
-      this.onprogress(e, this.total - 1)
+      this.handleProgress(e, this.total - 1)
     }
     this.total -= 1
     this.startItem()
@@ -70,6 +70,12 @@ class Concurrent {
     if (this.errors.length === this.errorLimit) {
       this.onerror(this.errors)
     }
+  }
+
+  // 进度
+  handleProgress() {
+    if (this.errors.length >= this.errorLimit) return
+    this.onprogress(null, this.total - 1)
   }
 }
 
