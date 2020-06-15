@@ -91,6 +91,6 @@ module.exports = (options = {}, ctrl = {}) => {
       reject(e)
     }
     const con = new Concurrent(options, onsuccess, onerror)
-    ctrl.cancel = con.cancel.call(con)
+    ctrl.cancel = con.cancel.bind(con)
   })
 }
