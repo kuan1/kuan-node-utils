@@ -27,21 +27,24 @@ const ctrl = {}
 start()
 
 async function start() {
+  const options = {
+    // 下载文件数组
+    data,
+    // 允许错误数量
+    errorLimit: 1,
+    // 下载进度
+    onprogress(e, total) {
+      console.log('剩余任务数量', total)
+      e && console.log(e)
+      // 取消任务
+      ctrl.cancel()
+    },
+  }
+
   try {
-    await download(
-      {
-        data,
-        errorLimit: 1,
-        onprogress(e, total) {
-          console.log('剩余任务数量', total)
-          e && console.log(e)
-          ctrl.cancel()
-        },
-      },
-      ctrl
-    )
+    await download(options, ctrl)
     console.log('任务下载成功')
   } catch (e) {
-    console.log(11, e)
+    console.log('失败', e)
   }
 }
