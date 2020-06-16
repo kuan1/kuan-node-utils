@@ -30,14 +30,16 @@ async function start() {
   const options = {
     // 下载文件数组
     data,
+    // 并发下载数量
+    concurrentNum: 3,
     // 允许错误数量
-    errorLimit: 1,
+    errorLimit: 20,
     // 下载进度
     onprogress(e, total) {
       console.log('剩余任务数量', total)
       e && console.log(e)
       // 取消任务
-      ctrl.cancel()
+      // ctrl.cancel()
     },
   }
 
