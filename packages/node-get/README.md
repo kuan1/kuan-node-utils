@@ -1,4 +1,4 @@
-# @luzhongk/node-download
+# @luzhongk/node-get
 
 > nodejs 实现批量下载文件，支持并发下载/手动停止下载/返回 Promise
 
