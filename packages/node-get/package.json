@@ -1,6 +1,6 @@
 {
   "name": "@luzhongk/node-get",
-  "version": "1.1.7",
+  "version": "1.1.8",
   "description": "批量下载文件",
   "keywords": [
     "nodejs",
