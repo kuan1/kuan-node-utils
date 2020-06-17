@@ -1,6 +1,6 @@
 {
   "name": "@luzhongk/node-get",
-  "version": "1.1.8",
+  "version": "1.1.9",
   "description": "批量下载文件",
   "keywords": [
     "nodejs",
@@ -33,6 +33,6 @@
   "dependencies": {
     "axios": "^0.19.2",
     "chalk": "^4.0.0",
-    "fs-extra": "^9.0.0"
+    "fs-extra": "^8.1.0"
   }
 }
