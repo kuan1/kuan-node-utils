@@ -40,17 +40,17 @@ class Concurrent {
 
   async startItem() {
     const item = this.data.shift()
-    if (!item) {
-      return this.validateSuccess()
-    }
+    if (!item) return
     try {
       await this.fn(item)
-      this.handleProgress(null, this.total - 1)
+      this.total -= 1
+      this.handleProgress(null, this.total)
     } catch (e) {
       this.validateError(e)
-      this.handleProgress(e, this.total - 1)
+      this.total -= 1
+      this.handleProgress(e, this.total)
     }
-    this.total -= 1
+    this.validateSuccess()
     this.startItem()
   }
 
@@ -75,7 +75,7 @@ class Concurrent {
   // 进度
   handleProgress() {
     if (this.errors.length >= this.errorLimit) return
-    this.onprogress(null, this.total - 1)
+    this.onprogress(null, this.total)
   }
 }
 
