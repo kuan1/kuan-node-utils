@@ -2,7 +2,7 @@ const chalk = require('chalk')
 const address = require('address')
 
 // 运行成功
-function reportRunning(port) {
+function runReporter(port) {
   const local = `http://localhost:${port}`
   const network = `http://${address.ip()}:${port}`
   console.log(
@@ -16,4 +16,4 @@ function reportRunning(port) {
   )
 }
 
-module.exports = reportRunning
+module.exports = runReporter

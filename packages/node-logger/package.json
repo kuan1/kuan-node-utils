@@ -7,6 +7,8 @@
   ],
   "scripts": {
     "dev": "node __tests__",
+    "report-files": "node __tests__/report-files",
+    "test": "node __tests__/test",
     "version": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0 --commit-path '.'"
   },
   "author": "luzhongkuan <luzhongk@126.com>",
@@ -32,5 +34,10 @@
   "dependencies": {
     "address": "^1.1.2",
     "chalk": "^3.0.0"
+  },
+  "devDependencies": {
+    "cliui": "^7.0.4",
+    "gzip-size": "^6.0.0",
+    "recursive-readdir": "^2.2.2"
   }
 }
